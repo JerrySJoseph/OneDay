@@ -1,0 +1,23 @@
+<resources>
+    <declare-styleable name="FullscreenAttrs">
+        <attr name="fullscreenBackgroundColor" format="color" />
+        <attr name="fullscreenTextColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="PhoneAuthView">
+        <attr name="auth_hero_src" format="reference" />
+        <attr name="verify_hero_src" format="reference" />
+        <attr name="themeColor" format="color" />
+        <attr name="phone_auth_title" format="string" />
+        <attr name="phone_verify_title" format="string" />
+        <attr name="phone_auth_desc" format="string" />
+        <attr name="phone_verify_desc" format="string" />
+        <attr name="auth_btn_text" format="string" />
+        <attr name="auth_btn_icon" format="reference" />
+        <attr name="verify_btn_text" format="string" />
+        <attr name="verify_btn_icon" format="reference" />
+        <attr name="enable_flag" format="boolean"/>
+        <attr name="autoPhoneCode" format="boolean"/>
+        <attr name="showPhoneCode" format="boolean"/>
+        <attr name="phone_code_array" format="reference"/>
+    </declare-styleable>
+</resources>
