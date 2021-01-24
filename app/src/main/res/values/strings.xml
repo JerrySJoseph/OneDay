@@ -7,7 +7,17 @@
     <string name="phone_verify_info_text">We have sent you a One Time password in your Phone. Please enter the OTP to continue.</string>
     <string name="interests_desc">Enter your interests seperated by comma (,) to help people know you better.</string>
     <string name="bio_desc">A Short and engaging bio increase the chance of matching with your other half. It should not be more than 500 letters, and it will be your first impression.</string>
+    <string name="nickname_desc">A nick name is the name shown to users. You can choose any nickname you want but make sure it is not offensive.</string>
     <string name="copyright">Copyrights &#169; 2020 OneDay. All Rights Reserved</string>
+
+    <!-- Facebook SDK -->
+    <string name="facebook_app_id">4870572953017999</string>
+    <string name="fb_login_protocol_scheme">fb4870572953017999</string>
+
+    <!--Google SignIN-->
+    <string name="google_sign_in_client_id">288807207053-ddmbhrvk1r77iqul897ucu4o45r256ld.apps.googleusercontent.com</string>
+    <string name="google_sign_in_client_secret">LW-RoCrP6kdWe0rPzUbKyxgD</string>
+
     <!-- Country ISO codes and Phone Code -->
     <string-array name="CountryCodes">
         <item>93,AF</item>

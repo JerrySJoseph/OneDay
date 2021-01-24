@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "288807207053",
+    "project_id": "oneday-5f5bb",
+    "storage_bucket": "oneday-5f5bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288807207053:android:0b4e3e49f35f0ed73222c4",
+        "android_client_info": {
+          "package_name": "com.example.oneday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288807207053-af922i3daslom52lhda735rrifaq5c6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-hTIDOJJ2QiRorhJkIiNjjwagTQzk7CQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288807207053-af922i3daslom52lhda735rrifaq5c6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

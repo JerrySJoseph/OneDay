@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".UI.PhoneAuthentication.PhoneAuthActivity">
+    tools:context=".UI.Profile.ProfileSetup">
     <RelativeLayout
         android:id="@+id/action_bar"
         android:layout_alignParentTop="true"
@@ -37,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="SAVE"
             android:layout_alignParentRight="true"
             android:textStyle="bold"
             android:textSize="16sp"
@@ -59,12 +60,12 @@
             android:gravity="center">
             <!--Profile Image-->
             <RelativeLayout
+                android:id="@+id/image_picker"
                 android:layout_margin="10dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_centerInParent="true"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
@@ -99,6 +100,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/fullname"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -109,6 +111,45 @@
                     android:textSize="@dimen/content"
                     android:minHeight="50dp"
                     android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:text=" Nickname"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="5dp"
+                    android:textSize="@dimen/subtitle"
+                    android:paddingBottom="2dp"
+                    android:background="#f5f5f5"
+                    android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/nickname"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="2dp"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Add Your Nickname here"
+                    android:textSize="@dimen/content"
+                    android:minHeight="50dp"
+                    android:inputType="textCapWords"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:text="@string/nickname_desc"
+                    android:textSize="@dimen/desc"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="2dp"
+                    android:background="#f5f5f5"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -154,6 +195,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/email"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -181,6 +223,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/bio"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -251,49 +294,10 @@
                     android:paddingBottom="2dp"
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                  >
-                   <LinearLayout
-                       android:layout_margin="10dp"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1"
-                       android:background="@drawable/bg_button_primary"
-                       android:minHeight="40dp"
-                       android:elevation="5dp"
-                       android:gravity="center">
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:gravity="top|left"
-                           android:text=" MALE"
-                           android:drawableLeft="@drawable/ic_male_gender"
-                           android:drawableTint="@color/white"
-                           android:textColor="@color/white"
-                           />
-                   </LinearLayout>
-                   <LinearLayout
-                       android:layout_margin="10dp"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_weight="1"
-                       android:background="@drawable/bg_rounded_stroke_primary"
-                       android:minHeight="40dp"
-                       android:elevation="5dp"
-                       android:gravity="center">
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:gravity="top|left"
-                           android:text=" FEMALE"
-                           android:drawableLeft="@drawable/ic_gender_female"
-                           android:drawableTint="@color/colorPrimary"
-                           android:textColor="@color/colorPrimary"
-                           />
-                   </LinearLayout>
-               </LinearLayout>
+                <com.example.oneday.Views.MultiSelectGender
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -310,49 +314,10 @@
                     android:paddingBottom="2dp"
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
-                <LinearLayout
+                <com.example.oneday.Views.MultiSelectGender
+                    android:id="@+id/interestedIn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-                    <LinearLayout
-                        android:layout_margin="10dp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_button_primary"
-                        android:minHeight="40dp"
-                        android:elevation="5dp"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="top|left"
-                            android:text=" MALE"
-                            android:drawableLeft="@drawable/ic_male_gender"
-                            android:drawableTint="@color/white"
-                            android:textColor="@color/white"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_margin="10dp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_stroke_primary"
-                        android:minHeight="40dp"
-                        android:elevation="5dp"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="top|left"
-                            android:text=" FEMALE"
-                            android:drawableLeft="@drawable/ic_gender_female"
-                            android:drawableTint="@color/colorPrimary"
-                            android:textColor="@color/colorPrimary"
-                            />
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -370,6 +335,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/phone"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -397,6 +363,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/interests"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -435,6 +402,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/jobtitle"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -462,6 +430,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/company"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -489,6 +458,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/school"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"
@@ -516,6 +486,7 @@
                     android:background="#f5f5f5"
                     android:textStyle="bold"/>
                 <EditText
+                    android:id="@+id/location"
                     android:paddingTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingBottom="2dp"

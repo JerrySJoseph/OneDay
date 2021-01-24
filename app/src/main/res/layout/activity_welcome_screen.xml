@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
                 <LinearLayout
+                    android:id="@+id/fb_login"
                     android:clickable="true"
                     android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
@@ -59,6 +60,7 @@
                     android:elevation="5dp"
                     android:minWidth="250dp"
                     android:layout_margin="10dp"
+                    android:onClick="onFbLoginClick"
                     >
                     <ImageView
                         android:layout_width="24dp"
@@ -109,6 +111,7 @@
                     android:padding="10dp"
                     android:elevation="5dp"
                     android:minWidth="250dp"
+                    android:onClick="onGoogleLoginClick"
                     android:layout_margin="10dp"
                     >
                     <ImageView
@@ -128,13 +131,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="or continue as a guest with code?"
-                android:textSize="@dimen/content"
-                android:textColor="@color/colorPrimary"/>
 
         </LinearLayout>
 

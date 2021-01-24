@@ -100,6 +100,10 @@ public class PhoneAuthView extends RelativeLayout {
         });
 
     }
+    public String getPhoneNumber()
+    {
+        return code.getText().toString()+phone.getText().toString();
+    }
     public void moveToVerify()
     {
         layout.removeAllViews();
@@ -138,6 +142,10 @@ public class PhoneAuthView extends RelativeLayout {
                     if(addresses != null && addresses.size() > 0) {
                         country_code = addresses.get(0).getCountryCode();
                         country_name=addresses.get(0).getCountryName();
+                        String msg="";
+                        for(int i=0;i<addresses.get(0).getMaxAddressLineIndex();i++)
+                            msg+=" % "+addresses.get(0).getAddressLine(i);
+                        Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
                         break;
                     }
                 } catch (IOException e) {
