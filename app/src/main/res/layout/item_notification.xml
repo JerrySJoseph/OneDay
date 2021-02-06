@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/icon"
+        android:layout_width="@dimen/msgIcon"
+        android:layout_height="@dimen/msgIcon"
+        android:src="@drawable/ic_user__profile"
+        app:civ_border_width="@dimen/_2sdp"
+        app:civ_border_color="@color/colorPrimary"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_toRightOf="@id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="You have a new connection request from alia bhatt "
+            android:textSize="@dimen/notificationContentSize" />
+        <TextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.02 pm"
+            android:textSize="@dimen/notificationTimestampSize"/>
+    </LinearLayout>
+
+</RelativeLayout>

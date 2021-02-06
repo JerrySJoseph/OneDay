@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="round_corner_radius">30dp</dimen>
-    <dimen name="title">20sp</dimen>
-    <dimen name="subtitle">16sp</dimen>
-    <dimen name="content">16sp</dimen>
-    <dimen name="desc">14sp</dimen>
+    <dimen name="actionBarTitle">@dimen/_18ssp</dimen>
+    <dimen name="round_corner_radius">@dimen/_30sdp</dimen>
+    <dimen name="title">@dimen/_18ssp</dimen>
+    <dimen name="subtitle">@dimen/_16ssp</dimen>
+    <dimen name="content">@dimen/_14ssp</dimen>
+    <dimen name="desc">@dimen/_12ssp</dimen>
+    <dimen name="msgUsername">@dimen/_16ssp</dimen>
+    <dimen name="msglastMsg">@dimen/_14ssp</dimen>
+    <dimen name="msgtimestamp">@dimen/_12ssp</dimen>
+    <dimen name="badgeSize">@dimen/_16sdp</dimen>
+    <dimen name="badgeSizeSmall">@dimen/_12sdp</dimen>
+    <dimen name="badgeText">@dimen/_10ssp</dimen>
+    <dimen name="msgIcon">@dimen/_50sdp</dimen>
+    <dimen name="profileViewageSize">@dimen/_12ssp</dimen>
+    <dimen name="profileViewdistanceSize">@dimen/_12ssp</dimen>
+    <dimen name="profileViewSmallIconsize">@dimen/_20sdp</dimen>
+    <dimen name="layoutPadding">@dimen/_10sdp</dimen>
+    <dimen name="likeButtonSize">@dimen/_45sdp</dimen>
+    <dimen name="dashBoardButtonSize">@dimen/_35sdp</dimen>
+    <dimen name="notificationTimestampSize">@dimen/_8ssp</dimen>
+    <dimen name="notificationContentSize">@dimen/_12ssp</dimen>
 </resources>

@@ -273,6 +273,11 @@ public class Profile {
         return object;
 
     }
+    public static Profile fromJSON(JSONObject object) throws Exception
+    {
+       return new Profile();
+
+    }
     public static Profile getTestObject()
     {
         ArrayList<String>arrayList= new ArrayList<>();

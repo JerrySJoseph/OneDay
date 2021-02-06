@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_margin="10dp"
+<LinearLayout
+    android:layout_margin="@dimen/layoutPadding"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -16,13 +17,13 @@
         android:clickable="true"
         android:foreground="@drawable/bg_selected">
         <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp">
+            android:layout_width="@dimen/bottom_nav_item_height"
+            android:layout_height="@dimen/bottom_nav_item_width">
             <ImageView
                 android:id="@+id/ic_notif"
                 android:layout_centerInParent="true"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/bottom_nav_item_icon_width"
+                android:layout_height="@dimen/bottom_nav_item_icon_height"
                 app:tint="@color/black_overlay"
                 android:src="@drawable/ic_notifications"/>
             <TextView
@@ -30,8 +31,8 @@
                 android:id="@+id/tv_notif"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="@dimen/badgeSizeSmall"
+                android:layout_height="@dimen/badgeSizeSmall"
                 android:background="@drawable/bg_badge"
                 android:padding="2dp"
                 android:gravity="center"
@@ -48,13 +49,13 @@
         android:layout_weight="1"
         android:gravity="center">
         <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp">
+            android:layout_width="@dimen/bottom_nav_item_height"
+            android:layout_height="@dimen/bottom_nav_item_width">
             <ImageView
                 android:id="@+id/ic_likes"
                 android:layout_centerInParent="true"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/bottom_nav_item_icon_width"
+                android:layout_height="@dimen/bottom_nav_item_icon_height"
                 app:tint="@color/black_overlay"
                 android:src="@drawable/ic_likes"/>
             <TextView
@@ -62,8 +63,8 @@
                 android:id="@+id/tv_likes"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="@dimen/badgeSizeSmall"
+                android:layout_height="@dimen/badgeSizeSmall"
                 android:background="@drawable/bg_badge"
                 android:padding="2dp"
                 android:gravity="center"
@@ -82,13 +83,13 @@
         android:layout_weight="1"
         android:gravity="center">
         <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp">
+            android:layout_width="@dimen/bottom_nav_item_height"
+            android:layout_height="@dimen/bottom_nav_item_width">
             <ImageView
                 android:id="@+id/ic_home"
                 android:layout_centerInParent="true"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/bottom_nav_item_icon_width"
+                android:layout_height="@dimen/bottom_nav_item_icon_height"
                 app:tint="@color/white"
                 android:src="@drawable/ic_home"/>
 
@@ -104,13 +105,13 @@
         android:layout_weight="1"
         android:gravity="center">
         <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp">
+            android:layout_width="@dimen/bottom_nav_item_height"
+            android:layout_height="@dimen/bottom_nav_item_width">
             <ImageView
                 android:id="@+id/ic_requests"
                 android:layout_centerInParent="true"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/bottom_nav_item_icon_width"
+                android:layout_height="@dimen/bottom_nav_item_icon_height"
                 app:tint="@color/black_overlay"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_requests"/>
@@ -119,8 +120,8 @@
                 android:id="@+id/tv_requests"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="@dimen/badgeSizeSmall"
+                android:layout_height="@dimen/badgeSizeSmall"
                 android:background="@drawable/bg_badge"
                 android:padding="2dp"
                 android:gravity="center"
@@ -137,13 +138,13 @@
         android:layout_weight="1"
         android:gravity="center">
         <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="30dp">
+            android:layout_width="@dimen/bottom_nav_item_height"
+            android:layout_height="@dimen/bottom_nav_item_width">
             <ImageView
                 android:id="@+id/ic_profile"
                 android:layout_centerInParent="true"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/bottom_nav_item_icon_width"
+                android:layout_height="@dimen/bottom_nav_item_icon_height"
                 app:tint="@color/black_overlay"
                 android:src="@drawable/ic_profile"/>
             <TextView
@@ -151,8 +152,8 @@
                 android:id="@+id/tv_profile"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="@dimen/badgeSizeSmall"
+                android:layout_height="@dimen/badgeSizeSmall"
                 android:background="@drawable/bg_badge"
                 android:padding="2dp"
                 android:gravity="center"

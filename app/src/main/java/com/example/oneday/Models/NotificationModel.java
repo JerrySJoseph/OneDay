@@ -8,10 +8,16 @@ import java.io.Serializable;
 
 @Entity
 public class NotificationModel implements Serializable {
+
+    public static enum NotificationType{
+        NORMAL,
+        LINKED,
+        LINKED_WITH_BUTTON
+    }
+
+
     @PrimaryKey(autoGenerate = true)
     public int id;
-    @ColumnInfo(name = "title")
-    String title;
     @ColumnInfo(name = "body")
     String body;
     @ColumnInfo(name = "timestamp")
@@ -23,18 +29,10 @@ public class NotificationModel implements Serializable {
 
     public NotificationModel() {
     }
-    public NotificationModel(String title, String body, long timestamp) {
-        this.title = title;
+    public NotificationModel(String body, long timestamp) {
+
         this.body = body;
         this.timestamp = timestamp;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getBody() {

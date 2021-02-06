@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bottom_nav_item_height">@dimen/_30sdp</dimen>
+    <dimen name="bottom_nav_item_width">@dimen/_30sdp</dimen>
+    <dimen name="bottom_nav_item_icon_height">@dimen/_24sdp</dimen>
+    <dimen name="bottom_nav_item_icon_width">@dimen/_24sdp</dimen>
+</resources>

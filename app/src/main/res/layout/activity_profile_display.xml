@@ -51,10 +51,10 @@
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="100dp"
+    android:paddingBottom="10dp"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
     <LinearLayout
-        android:padding="10dp"
+        android:padding="@dimen/layoutPadding"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -73,15 +73,14 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"/>
             <TextView
-
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="24 Years"
-                android:textSize="12dp"
+                android:textSize="@dimen/profileViewageSize"
                 android:textColor="@color/white"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
                 android:background="@drawable/bg_button_primary"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"/>
@@ -104,17 +103,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 km away"
-                android:textSize="12dp"
+                android:textSize="@dimen/profileViewdistanceSize"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
         <View
-            android:layout_width="150dp"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:background="@color/colorPrimary"/>
         <LinearLayout
-            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -122,46 +121,49 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:gravity="center|start">
+
                <ImageView
-                   android:layout_width="25dp"
-                   android:layout_height="25dp"
+                   android:layout_width="@dimen/profileViewSmallIconsize"
+                   android:layout_height="@dimen/profileViewSmallIconsize"
                    android:src="@drawable/ic_verified"
-                   app:tint="@color/colorPrimary"/>
+                   app:tint="@color/colorPrimary" />
+
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Verified"
                    android:textColor="@color/colorPrimary"
                    android:textSize="@dimen/desc"
-                   android:layout_marginLeft="5dp"/>
+                   android:layout_marginLeft="@dimen/_5sdp"/>
            </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|start">
+
                 <ImageView
+                    android:layout_width="@dimen/profileViewSmallIconsize"
+                    android:layout_height="@dimen/profileViewSmallIconsize"
                     android:padding="2dp"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
                     android:src="@drawable/ic_gender_female"
-                    app:tint="#89000000"/>
+                    app:tint="#89000000" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female, Interested in Male"
                     android:textColor="#89000000"
                     android:textSize="@dimen/desc"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/_5sdp"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|start">
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/profileViewSmallIconsize"
+                    android:layout_height="@dimen/profileViewSmallIconsize"
                     android:src="@drawable/ic_job"
                     app:tint="#89000000"
                     />
@@ -170,16 +172,16 @@
                     android:layout_height="wrap_content"
                     android:text="Sr. Design Engineer at Amazon"
                     android:textSize="@dimen/desc"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/_5sdp"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|start">
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/profileViewSmallIconsize"
+                    android:layout_height="@dimen/profileViewSmallIconsize"
                     android:src="@drawable/ic_school"
                     app:tint="#89000000"
                     />
@@ -188,14 +190,18 @@
                     android:layout_height="wrap_content"
                     android:text="Chandigarh University"
                     android:textSize="@dimen/desc"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/_5sdp"/>
             </LinearLayout>
 
 
         </LinearLayout>
+        <View
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@color/colorHighlight"/>
         <LinearLayout
-            android:layout_marginTop="20dp"
-            android:paddingTop="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -208,6 +214,7 @@
                 android:textColor="@color/black"
                />
             <TextView
+                android:layout_marginTop="@dimen/_10sdp"
                 android:id="@+id/bio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -230,38 +237,38 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/like"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/likeButtonSize"
+            android:layout_height="@dimen/likeButtonSize"
             android:src="@drawable/ic_likes"
             app:tint="@color/colorPrimary"
             android:background="@drawable/bg_circle"
             android:elevation="5dp"
-            android:padding="10dp"
+            android:padding="@dimen/_10sdp"
             android:scaleType="fitXY"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/_10sdp"
             />
         <ImageView
             android:id="@+id/slike"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/likeButtonSize"
+            android:layout_height="@dimen/likeButtonSize"
             android:src="@drawable/ic_star"
             app:tint="@android:color/holo_orange_light"
             android:background="@drawable/bg_circle"
             android:elevation="5dp"
-            android:padding="10dp"
-            android:layout_margin="10dp"
+            android:padding="@dimen/_10sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:scaleType="fitXY"
           />
         <ImageView
             android:id="@+id/ulike"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/likeButtonSize"
+            android:layout_height="@dimen/likeButtonSize"
             android:src="@drawable/ic_close"
             app:tint="@android:color/holo_blue_bright"
             android:background="@drawable/bg_circle"
             android:elevation="5dp"
-            android:padding="10dp"
-            android:layout_margin="10dp"
+            android:padding="@dimen/_10sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:scaleType="fitXY"
             />
     </LinearLayout>

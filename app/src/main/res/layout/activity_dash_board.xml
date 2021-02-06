@@ -8,12 +8,14 @@
     tools:context=".UI.DashBoard.DashBoard">
     <RelativeLayout
         android:id="@+id/search_panel"
-        android:padding="10dp"
+        android:paddingTop="@dimen/layoutPadding"
+        android:paddingLeft="@dimen/layoutPadding"
+        android:paddingRight="@dimen/layoutPadding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp">
+            android:layout_width="@dimen/dashBoardButtonSize"
+            android:layout_height="@dimen/dashBoardButtonSize">
             <ImageView
                 android:elevation="5dp"
                 android:clickable="true"
@@ -24,16 +26,16 @@
                 android:src="@drawable/ic_chat"
                 android:padding="7dp"
                 android:onClick="onChatClick"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                android:layout_width="@dimen/dashBoardButtonSize"
+                android:layout_height="@dimen/dashBoardButtonSize"/>
             <TextView
                 android:elevation="5dp"
                 android:layout_margin="3dp"
                 android:id="@+id/badge_chat"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="@dimen/badgeSizeSmall"
+                android:layout_height="@dimen/badgeSizeSmall"
                 android:background="@drawable/bg_badge"
                 android:padding="2dp"
                 android:gravity="center"
@@ -52,8 +54,8 @@
             android:src="@drawable/ic_filter"
             android:padding="5dp"
             android:onClick="onFilterClick"
-            android:layout_width="40dp"
-            android:layout_height="40dp"/>
+            android:layout_width="@dimen/dashBoardButtonSize"
+            android:layout_height="@dimen/dashBoardButtonSize"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_below="@id/search_panel"
