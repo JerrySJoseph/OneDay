@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OneDay"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UI.Profile.ImageUploadSelectionActivity"></activity>
+        <activity android:name=".UI.Requests.RequestsActivity"></activity>
+        <activity android:name=".UI.Chat.ChatActivity" />
+        <activity android:name=".UI.Likes.LikesActivity" />
+        <activity android:name=".UI.Notifications.NotificationsActivity" />
+        <activity android:name=".UI.Profile.ImageUploadSelectionActivity" />
         <activity
             android:name=".UI.DashBoard.ProfileDisplayActivity"
             android:theme="@style/Theme.OneDay.ProfileDisplay" />

@@ -43,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/subtitle"
                     android:text="24"
+                    android:clickable="false"
                     android:gravity="center"
                     android:minWidth="40dp"
                     android:background="@drawable/bg_button_primary"
@@ -56,6 +57,8 @@
                 android:text="Florida, USA"
                 />
             <TextView
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/desc"
@@ -65,7 +68,7 @@
                 />
         </LinearLayout>
         <ImageView
-            android:layout_toLeftOf="@id/slike"
+            android:layout_toLeftOf="@id/superlike"
             android:id="@+id/like"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -80,7 +83,7 @@
             />
         <ImageView
 
-            android:id="@+id/slike"
+            android:id="@+id/superlike"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_star"
@@ -94,8 +97,8 @@
             android:layout_centerHorizontal="true"
             />
         <ImageView
-            android:layout_toRightOf="@id/slike"
-            android:id="@+id/ulike"
+            android:layout_toRightOf="@id/superlike"
+            android:id="@+id/dislike"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_close"

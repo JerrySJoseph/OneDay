@@ -1,4 +1,4 @@
-package com.example.oneday.Utils;
+package com.example.oneday.Models;
 
 public class AuthMethod {
     public static final String FB_AUTH="auth-type-fb";

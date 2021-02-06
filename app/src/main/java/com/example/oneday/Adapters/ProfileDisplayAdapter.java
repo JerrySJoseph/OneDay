@@ -3,12 +3,13 @@ package com.example.oneday.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.oneday.Models.DisplayProfile;
+import com.example.oneday.Models.Profile;
 import com.example.oneday.R;
 
 import java.util.ArrayList;
@@ -16,13 +17,13 @@ import java.util.ArrayList;
 public class ProfileDisplayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-    private static int VIEWTYPE_AD=1;
-    private static int VIEWTYPE_PROFILE=2;
+    private static final int VIEWTYPE_AD=1;
+    private static final int VIEWTYPE_PROFILE=2;
     private int interval=5;
     private boolean enableAds=true;
-    ArrayList<DisplayProfile> models;
+    ArrayList<Profile> models;
     onProfileClickListener onProfileClickListener;
-    public ProfileDisplayAdapter(ArrayList<DisplayProfile> models) {
+    public ProfileDisplayAdapter(ArrayList<Profile> models) {
         this.models = models;
     }
 
@@ -34,7 +35,7 @@ public class ProfileDisplayAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return interval;
     }
 
-    public void setEnableAds(boolean enableAds) {
+    public void enableAds(boolean enableAds) {
         this.enableAds = enableAds;
     }
 
@@ -52,7 +53,13 @@ public class ProfileDisplayAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((ProfileDisplayHolder)holder).Bind(models.get(position));
+        switch (holder.getItemViewType())
+        {
+            case VIEWTYPE_PROFILE:((ProfileDisplayHolder)holder).Bind(models.get(position));break;
+            case VIEWTYPE_AD:((ADHolder)holder).Bind(models.get(position));break;
+
+        }
+
     }
 
     @Override
@@ -65,13 +72,62 @@ public class ProfileDisplayAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return (position%interval==0 && enableAds && position!=0 && interval!=0)?VIEWTYPE_AD:VIEWTYPE_PROFILE;
     }
 
-    protected class ProfileDisplayHolder extends RecyclerView.ViewHolder {
+    //Profile Display Holder
+    protected class ProfileDisplayHolder extends RecyclerView.ViewHolder  {
         CardView layout;
+        ImageView like,dislike,superlike;
         public ProfileDisplayHolder(@NonNull View itemView) {
             super(itemView);
             layout=itemView.findViewById(R.id.layout);
+            like=itemView.findViewById(R.id.like);
+            dislike=itemView.findViewById(R.id.dislike);
+            superlike=itemView.findViewById(R.id.superlike);
+
         }
-        public void Bind(final DisplayProfile profile)
+        public void Bind(final Profile profile)
+        {
+            like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onProfileClickListener!=null)
+                        onProfileClickListener.onLikeClick(profile);
+                }
+            });
+            dislike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onProfileClickListener!=null)
+                        onProfileClickListener.onDislikeClick(profile);
+                }
+            });
+            superlike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onProfileClickListener!=null)
+                        onProfileClickListener.onSuperLikeClick(profile);
+                }
+            });
+            layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onProfileClickListener!=null)
+                    {
+                        onProfileClickListener.onProfileClick(profile);
+                    }
+                }
+            });
+        }
+    }
+
+    //Holder for ADs
+    protected class ADHolder extends RecyclerView.ViewHolder {
+        CardView layout;
+
+        public ADHolder(@NonNull View itemView) {
+            super(itemView);
+            layout=itemView.findViewById(R.id.layout);
+        }
+        public void Bind(final Profile profile)
         {
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,14 +138,10 @@ public class ProfileDisplayAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             });
         }
     }
-    protected class ADHolder extends RecyclerView.ViewHolder {
-        CardView layout;
-        public ADHolder(@NonNull View itemView) {
-            super(itemView);
-            layout=itemView.findViewById(R.id.layout);
-        }
-    }
     public interface onProfileClickListener{
-        void onProfileClick(DisplayProfile profile);
+        void onProfileClick(Profile profile);
+        void onLikeClick(Profile profile);
+        void onSuperLikeClick(Profile profile);
+        void onDislikeClick(Profile profile);
     }
 }

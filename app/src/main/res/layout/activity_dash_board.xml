@@ -11,7 +11,37 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+            <ImageView
+                android:elevation="5dp"
+                android:clickable="true"
+                android:foreground="@drawable/bg_selected"
+                android:layout_centerInParent="true"
+                android:id="@+id/chat"
+                app:tint="@color/colorPrimary"
+                android:src="@drawable/ic_chat"
+                android:padding="7dp"
+                android:onClick="onChatClick"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:elevation="5dp"
+                android:layout_margin="3dp"
+                android:id="@+id/badge_chat"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:background="@drawable/bg_badge"
+                android:padding="2dp"
+                android:gravity="center"
+                android:textSize="7sp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
         <ImageView
+            android:elevation="5dp"
             android:clickable="true"
             android:foreground="@drawable/bg_selected"
             android:layout_centerVertical="true"

@@ -1,10 +1,13 @@
 package com.example.oneday.Views;
 
+import android.animation.TimeAnimator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -23,6 +26,8 @@ import com.example.oneday.Adapters.ProfileDisplayAdapter;
 import com.example.oneday.R;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ImageSliderView extends RelativeLayout {
 
@@ -31,6 +36,10 @@ public class ImageSliderView extends RelativeLayout {
     int selectedIndex=0;
     ImageAdapter adapter;
     ArrayList<String>imageURLs;
+    private int mInterval = 2000; // 2 seconds by default, can be changed later
+    private Handler mHandler;
+    boolean enableSlideShow=false;
+
     public ImageSliderView(Context context) {
         super(context);
     }
@@ -48,6 +57,9 @@ public class ImageSliderView extends RelativeLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
+    public void enableSlideShow(boolean enableSlideShow) {
+        this.enableSlideShow = enableSlideShow;
+    }
 
     public void setSelectedIndex(int selectedIndex) {
         this.selectedIndex = selectedIndex;
@@ -57,12 +69,16 @@ public class ImageSliderView extends RelativeLayout {
     public void Init(ArrayList<String>imageURLs)
     {
         inflate(this.getContext(), R.layout.view_image_slider,this);
+        mHandler = new Handler();
         viewPager2=findViewById(R.id.viewpager);
         pageIndicatorLayout=findViewById(R.id.page_indicator);
         adapter= new ImageAdapter(imageURLs);
         viewPager2.setAdapter(adapter);
         this.imageURLs=imageURLs;
-        updateIndicator();
+        setSelectedIndex(3);
+        if(enableSlideShow)
+            startSlideShow();
+
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -73,11 +89,34 @@ public class ImageSliderView extends RelativeLayout {
 
 
     }
+    Runnable slideChanger= new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if(selectedIndex==imageURLs.size()-1)
+                    selectedIndex=0;
+                viewPager2.setCurrentItem(selectedIndex++,true);
+            } finally {
+                // 100% guarantee that this always happens, even if
+                // your update method throws an exception
+                mHandler.postDelayed(slideChanger, mInterval);
+            }
 
+        }
+    };
+    void startSlideShow()
+    {
+        slideChanger.run();
+    }
+    void pauseSlideShow()
+    {
+        mHandler.removeCallbacks(slideChanger);
+    }
 
     void updateIndicator()
     {
-        if(imageURLs==null || imageURLs.size()<1)return;
+        if(imageURLs==null || imageURLs.size()<1)
+            return;
         pageIndicatorLayout.removeAllViews();
         //Create Page Indicator
         for(int i=0;i<imageURLs.size();i++)
@@ -96,7 +135,7 @@ public class ImageSliderView extends RelativeLayout {
 
 
     //Adapter
-    protected static class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder> {
+    protected class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder> {
 
         ArrayList<String> models;
 
@@ -125,6 +164,20 @@ public class ImageSliderView extends RelativeLayout {
             public ImageHolder(@NonNull View itemView) {
                 super(itemView);
                 imageView=itemView.findViewById(R.id.image);
+                imageView.setOnTouchListener(new OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        if(event.getAction() == MotionEvent.ACTION_DOWN){
+                            pauseSlideShow();
+                            return true;
+                        }
+                        else if(event.getAction() == MotionEvent.ACTION_UP){
+                            startSlideShow();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
             }
             public void Bind(String Url)
             {

@@ -9,31 +9,31 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.oneday.Models.ContactProfile;
-import com.example.oneday.Models.DeviceProfile;
-import com.example.oneday.Models.DisplayProfile;
+import com.example.oneday.Models.Profile;
 import com.example.oneday.Models.WalletProfile;
 import com.example.oneday.R;
 import com.example.oneday.UI.DashBoard.DashBoard;
-import com.example.oneday.Utils.AuthMethod;
+import com.example.oneday.Models.AuthMethod;
 import com.example.oneday.Utils.Functions;
 import com.example.oneday.Utils.PrefManager;
+import com.example.oneday.Utils.ServerRequestHandler;
 import com.example.oneday.Views.EditTextDatePicker;
 import com.example.oneday.Views.MultiSelectGender;
 import com.example.oneday.interfaces.FirebaseSaveResponse;
+import com.example.oneday.interfaces.ServerRequestResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -43,7 +43,7 @@ public class ProfileSetup extends AppCompatActivity {
     EditTextDatePicker datePicker;
     EditText fullname,email,bio,phone,interests,jobTitle,company,school,location,nickname;
     MultiSelectGender gender,interestedIn;
-    String Country,District,State,CountryCode,PostalCode;
+    String Country,District,State;
     double latitude,longitude;
     private static String auth_method="NONE";
     @Override
@@ -51,12 +51,12 @@ public class ProfileSetup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
 
+
         //Date picker
         datePicker= new EditTextDatePicker(this,R.id.date_picker);
 
         //Auth method from intent
         auth_method= PrefManager.getAuthMethodSelected(this);
-
 
         //Registering IDs
         fullname=findViewById(R.id.fullname);
@@ -144,84 +144,23 @@ public class ProfileSetup extends AppCompatActivity {
     }
     private void prepareAndSaveData()
     {
-        DisplayProfile displayProfile= new DisplayProfile();
-        ContactProfile contactProfile= new ContactProfile();
-        DeviceProfile deviceProfile= new DeviceProfile();
-        WalletProfile walletProfile= new WalletProfile();
-
-        //Preparing display Profile
-        displayProfile.setId(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        displayProfile.setName(readValue(fullname,FirebaseAuth.getInstance().getCurrentUser().getUid()));
-        displayProfile.setBio(readValue(bio,"N/A"));
-        displayProfile.setInterests(readValue(interests,"N/A"));
-        displayProfile.setJobTitle(readValue(jobTitle,"N/A"));
-        displayProfile.setCompany(readValue(company,"N/A"));
-        displayProfile.setSchool(readValue(school,"N/A"));
-        displayProfile.setNickname(readValue(nickname,displayProfile.getName()));
-        displayProfile.setGender(gender.getSelectedGender());
-        displayProfile.setInterestedIn(interestedIn.getSelectedGender());
-        displayProfile.setDOB(datePicker.getSelectedDate());
-        DisplayProfile.Save(displayProfile, new FirebaseSaveResponse() {
-            @Override
-            public void onSaveSuccess() {
-
-            }
-
-            @Override
-            public void onSaveFailure(String reason) {
-
-            }
-
-            @Override
-            public void onSaveError(String reason) {
-
-            }
-        });
         getLocationData();
-        contactProfile.setId(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        contactProfile.setEmail(readValue(email,"N/A"));
-        contactProfile.setPhone(readValue(phone,"N/A"));
-        contactProfile.setCountry(Country==null?"N/A":Country);
-        contactProfile.setCountryCode(CountryCode==null?"N/A":CountryCode);
-        contactProfile.setDistrict(District==null?"N/A":District);
-        contactProfile.setState(State==null?"N/A":State);
-        contactProfile.setPostalCode(PostalCode==null?"N/A":PostalCode);
-        contactProfile.setLatitude(latitude);
-        contactProfile.setLongitude(longitude);
-        ContactProfile.Save(contactProfile, new FirebaseSaveResponse() {
+        ServerRequestHandler.SaveProfile(this,Profile.getTestObject(), new ServerRequestResponse() {
             @Override
-            public void onSaveSuccess() {
-                startActivity(new Intent(getApplicationContext(), DashBoard.class));
+            public void onResponse(String response) {
+                Log.d("S-Response",response);
+                startActivity(new Intent(ProfileSetup.this,DashBoard.class));
+                PrefManager.setProfileSetupComplete(ProfileSetup.this,true);
             }
 
             @Override
-            public void onSaveFailure(String reason) {
-
-            }
-
-            @Override
-            public void onSaveError(String reason) {
-
+            public void onError(String error) {
+                Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT);
+                Log.e("S-Response",error);
+                //TODO: REMOVE this statement in production
+                PrefManager.setProfileSetupComplete(ProfileSetup.this,true);
             }
         });
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.e("FCM","Fetching firebase token failed");
-                            return;
-                        }
-
-                        // Get new FCM registration token
-                        String token = task.getResult();
-                        deviceProfile.setNotifToken(token);
-                        deviceProfile.setId(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        String deviceID= Functions.getDeviceID(getApplicationContext());
-                        deviceProfile.setDeviceID(deviceID);
-                        DeviceProfile.Save(deviceProfile,null);
-                    }
-                });
 
     }
     private void getLocationData()
@@ -235,11 +174,9 @@ public class ProfileSetup extends AppCompatActivity {
                 try {
                     List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                     if(addresses != null && addresses.size() > 0) {
-                        CountryCode=addresses.get(0).getCountryCode();
                         Country=addresses.get(0).getCountryName();
                         District=addresses.get(0).getSubLocality();
                         State=addresses.get(0).getLocality();
-                        PostalCode=addresses.get(0).getPostalCode();
                         latitude=(addresses.get(0).getLatitude());
                         longitude=(addresses.get(0).getLongitude());
                         break;
@@ -260,7 +197,7 @@ public class ProfileSetup extends AppCompatActivity {
     }
 
     public void onNextClick(View view) {
-        if(validateFields())
+        if(true)
             prepareAndSaveData();
 
     }
